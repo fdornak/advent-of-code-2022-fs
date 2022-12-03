@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net7.0</TargetFramework>
+        <RootNamespace>test</RootNamespace>
+    </PropertyGroup>
+    <ItemGroup>
+        <Compile Include="Day1Test.fs" />
+        <Compile Include="Day2Test.fs" />
+        <Compile Include="Day3Test.fs" />
+        <Content Include=".gitignore" />
+        <PackageReference Include="FsUnit.xUnit" Version="5.1.0" />
+        <PackageReference Include="xunit.v3" Version="0.1.1-pre.121" />
+        <ProjectReference Include="..\AoC22\AoC22.fsproj" />
+    </ItemGroup>
+</Project>
