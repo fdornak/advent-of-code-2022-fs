@@ -5,13 +5,13 @@
         <RootNamespace>AoC22</RootNamespace>
     </PropertyGroup>
     <ItemGroup>
-        <Compile Include="Day1Test.fs" />
-        <Compile Include="Day2Test.fs" />
-        <Compile Include="Day3Test.fs" />
-        <Content Include=".gitignore" />
+        <Compile Include="Day1Test.fs"/>
+        <Compile Include="Day2Test.fs"/>
+        <Compile Include="Day3Test.fs"/>
         <Compile Include="Day4Test.fs"/>
-        <PackageReference Include="FsUnit.xUnit" Version="5.1.0" />
-        <PackageReference Include="xunit.v3" Version="0.1.1-pre.121" />
-        <ProjectReference Include="..\AoC22\AoC22.fsproj" />
+        <Compile Include="Day5Test.fs"/>
+        <PackageReference Include="FsUnit.xUnit" Version="5.1.0"/>
+        <PackageReference Include="xunit.v3" Version="0.1.1-pre.121"/>
+        <ProjectReference Include="..\AoC22\AoC22.fsproj"/>
     </ItemGroup>
 </Project>

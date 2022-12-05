@@ -5,13 +5,13 @@
         <RootNamespace>AoC22</RootNamespace>
     </PropertyGroup>
     <ItemGroup>
-        <Compile Include="Day2.fs" />
-        <Compile Include="Day1.fs" />
-        <Compile Include="Day3.fs" />
         <Content Include="..\puzzle_inputs\day*.txt">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </Content>
-        <Content Include=".gitignore" />
+        <Compile Include="Day1.fs"/>
+        <Compile Include="Day2.fs"/>
+        <Compile Include="Day3.fs"/>
         <Compile Include="Day4.fs"/>
+        <Compile Include="Day5.fs"/>
     </ItemGroup>
 </Project>
