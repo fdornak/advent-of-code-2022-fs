@@ -3,16 +3,16 @@
 open System.Text.RegularExpressions
 open System.IO
 
-type MovementOrder = { Count: int; From: int; To: int }
+type private MovementOrder = { Count: int; From: int; To: int }
 
-type State = array<list<char>>
+type private State = array<list<char>>
 
-let fileSplitByLines: string [] =
+let private fileSplitByLines: string [] =
     (File.ReadAllText "day5.txt").Split("\r\n")
     |> Array.skip 10
     |> Array.filter (fun str -> not (Seq.isEmpty str))
 
-let initialState: State =
+let private initialState: State =
     [| [ 'R'; 'W'; 'F'; 'H'; 'T'; 'S' ]
        [ 'W'; 'Q'; 'D'; 'G'; 'S' ]
        [ 'W'; 'T'; 'B' ]
@@ -23,10 +23,10 @@ let initialState: State =
        [ 'R'; 'J'; 'C'; 'T'; 'M'; 'G'; 'N' ]
        [ 'W'; 'B'; 'G'; 'L' ] |]
 
-let orderRegex =
+let private orderRegex =
     Regex("move\\s+(\\d+)\\s+from\\s+(\\d+)\\s+to\\s+(\\d+)", RegexOptions.Compiled)
 
-let parseMovementOrder (str: string) : MovementOrder =
+let private parseMovementOrder (str: string) : MovementOrder =
     let m = orderRegex.Match(str)
     let countVal = int m.Groups[1].Value
     let fromVal = int m.Groups[2].Value - 1
@@ -36,7 +36,7 @@ let parseMovementOrder (str: string) : MovementOrder =
       From = fromVal
       To = toVal }
 
-let doOneMovement9000 (state: State) ((fromI, toI): int * int) : State =
+let private doOneMovement9000 (state: State) ((fromI, toI): int * int) : State =
     let poppedChar = state[fromI].Head
 
     state
@@ -46,11 +46,11 @@ let doOneMovement9000 (state: State) ((fromI, toI): int * int) : State =
         | i when i = toI -> poppedChar :: v
         | _ -> v)
 
-let processMovementOrder9000 (state: State) (order: MovementOrder) : State =
+let private processMovementOrder9000 (state: State) (order: MovementOrder) : State =
     Seq.init order.Count (fun _ -> (order.From, order.To))
     |> Seq.fold doOneMovement9000 state
 
-let processMovementOrder9001 (state: State) (order: MovementOrder) : State =
+let private processMovementOrder9001 (state: State) (order: MovementOrder) : State =
     let listToBeMoved =
         List.take order.Count state[order.From]
 

@@ -2,13 +2,13 @@
 
 open System.IO
 
-type Rucksack = { Left: Set<char>; Right: Set<char> }
+type private Rucksack = { Left: Set<char>; Right: Set<char> }
 
-let fileSplitByLines: string [] =
+let private fileSplitByLines: string [] =
     (File.ReadAllText "day3.txt").Split("\r\n")
     |> Array.filter (fun str -> not (Seq.isEmpty str))
 
-let strIntoRucksack (str: string) : Rucksack =
+let private strIntoRucksack (str: string) : Rucksack =
     let length = str.Length
     let leftLength = length / 2
     let left = str |> Seq.take leftLength |> Set
@@ -18,17 +18,17 @@ let strIntoRucksack (str: string) : Rucksack =
 
     { Left = left; Right = right }
 
-let findIntersectInCompartments (rucksack: Rucksack) : char =
+let private findIntersectInCompartments (rucksack: Rucksack) : char =
     Set.intersect rucksack.Left rucksack.Right
     |> Set.minElement
 
-let findIntersectInGroup (group: string []) : char =
+let private findIntersectInGroup (group: string []) : char =
     group
-    |> Seq.map (fun x -> Set.ofSeq x)
+    |> Seq.map (Set.ofSeq)
     |> Set.intersectMany
     |> Set.minElement
 
-let charValue (c: char) : int =
+let private charValue (c: char) : int =
     match c with
     | c when c >= 'a' && c <= 'z' -> ((int) c) - 97 + 1
     | c when c >= 'A' && c <= 'Z' -> ((int) c) - 65 + 27

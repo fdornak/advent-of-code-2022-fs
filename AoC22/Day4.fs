@@ -2,13 +2,13 @@
 
 open System.IO
 
-type Sectors = { First: int * int; Second: int * int }
+type private Sectors = { First: int * int; Second: int * int }
 
-let fileSplitByLines: string [] =
+let private fileSplitByLines: string [] =
     (File.ReadAllText "day4.txt").Split("\r\n")
     |> Array.filter (fun str -> not (Seq.isEmpty str))
 
-let parseIntoSectors (str: string) : Sectors =
+let private parseIntoSectors (str: string) : Sectors =
     let split = str.Split(',')
 
     let splitByDashAndMap (s: string) = s.Split('-') |> Array.map int
@@ -21,12 +21,12 @@ let parseIntoSectors (str: string) : Sectors =
 
     { First = fRange; Second = sRange }
 
-let isOneFullyContained (sectors: Sectors) : bool =
+let private isOneFullyContained (sectors: Sectors) : bool =
     match sectors with
     | { First = (fa, fb); Second = (sa, sb) } when (sa >= fa && sb <= fb) || (fa >= sa && fb <= sb) -> true
     | _ -> false
 
-let isAnyOverlap (sectors: Sectors) : bool =
+let private isAnyOverlap (sectors: Sectors) : bool =
     match sectors with
     //fully contained
     | sectors when isOneFullyContained sectors -> true

@@ -3,12 +3,12 @@ module AoC22.Day2
 open System
 open System.IO
 
-type PlayType =
+type private PlayType =
     | Rock
     | Paper
     | Scissors
 
-type Outcome =
+type private Outcome =
     | Win
     | Lose
     | Draw
