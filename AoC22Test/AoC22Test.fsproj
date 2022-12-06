@@ -10,6 +10,7 @@
         <Compile Include="Day3Test.fs"/>
         <Compile Include="Day4Test.fs"/>
         <Compile Include="Day5Test.fs"/>
+        <Compile Include="Day6Test.fs"/>
         <PackageReference Include="FsUnit.xUnit" Version="5.1.0"/>
         <PackageReference Include="xunit.v3" Version="0.1.1-pre.121"/>
         <ProjectReference Include="..\AoC22\AoC22.fsproj"/>
